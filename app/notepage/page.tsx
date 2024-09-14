@@ -47,7 +47,7 @@ export default function NotePage({
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
               "A note to my future self"
             )}&url=${encodeURIComponent(
-              `http://localhost:3000/notepage?message=${message}&color=${color}`
+              `https://future-note.vercel.app/notepage?message=${message}&color=${color}`
             )}`}
             target="_blank"
             rel="noopener noreferrer"
