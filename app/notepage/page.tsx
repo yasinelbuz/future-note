@@ -14,8 +14,8 @@ export async function generateMetadata({
     title: "Future Note",
     openGraph: {
       title: `Note: ${message}`,
-      description: "Check out this note!",
-      images: ["/image.svg"],
+      description: "A note to your future self.",
+      images: ["/public/image.svg"],
     },
   };
 }
