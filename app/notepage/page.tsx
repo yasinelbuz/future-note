@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Head from "next/head";
 
@@ -17,10 +19,7 @@ export default function NotePage({
         <title>Future Note</title>
         <meta property="og:title" content={`Note: ${message}`} />
         <meta property="og:description" content="Check out this note!" />
-        <meta
-          property="og:image"
-          content={`/api/generate-image?message=${message}&color=${color}`}
-        />
+        <meta property="og:image" content="/public/image.svg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
       </Head>
