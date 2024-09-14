@@ -1,7 +1,24 @@
-"use client";
-
 import React from "react";
-import Head from "next/head";
+import { SITE_URL } from "@/constant/links";
+import { Metadata } from "next"; // Add this import statement
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}): Promise<Metadata> {
+  const encryptedMessage = searchParams.message?.toString() || "";
+  const message = decodeURIComponent(atob(encryptedMessage));
+
+  return {
+    title: "Future Note",
+    openGraph: {
+      title: `Note: ${message}`,
+      description: "Check out this note!",
+      images: ["/image.svg"],
+    },
+  };
+}
 
 export default function NotePage({
   searchParams,
@@ -15,14 +32,7 @@ export default function NotePage({
 
   return (
     <>
-      <Head>
-        <title>Future Note</title>
-        <meta property="og:title" content={`Note: ${message}`} />
-        <meta property="og:description" content="Check out this note!" />
-        <meta property="og:image" content="/public/image.svg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-      </Head>
+      {/* Ayrıca, bu sayfayı server component'e dönüştürmek için "use client" direktifini kaldırın */}
       <div
         className="min-h-screen flex items-center justify-center"
         style={{ backgroundColor: color }}
@@ -46,7 +56,7 @@ export default function NotePage({
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
               "A note to my future self"
             )}&url=${encodeURIComponent(
-              `https://future-note.vercel.app/notepage?message=${message}&color=${color}`
+              `${SITE_URL}/notepage?message=${message}&color=${color}`
             )}`}
             target="_blank"
             rel="noopener noreferrer"

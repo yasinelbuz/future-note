@@ -1,0 +1,1 @@
+export const SITE_URL:string = "https://future-note.vercel.app";
